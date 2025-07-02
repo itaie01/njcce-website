@@ -15,6 +15,27 @@ memberImageData.sort();
 
 const memberNames = [];
 
+type MemberBios = {
+  [id: string]: string;
+};
+
+const memberBiosDict: MemberBios = {
+  "Galit Dadoun Cohen":
+    "Galit Dadoun-Cohen brings a unique voice to the cantorate, combining a diverse Sephardic background with extensive classical musical training. Born and raised in Ashdod, Israel, she earned her Bachelor of Music and Artist Diploma from the Rubin Academy of Music of Tel Aviv University, her Master of Music from Brooklyn College – City University of New York and was ordained from the Hebrew Union College – Jewish Institute of Religion DFSSM in 2010. Since then, she has served as the Cantor of Temple B'nai Or in Morristown, N.J. In 2014, Dadoun-Cohen was named one of “Best New Jewish Music Voices” by the Forward’s “Soundtrack of Our Spirit”. In 2015, she published a chapter in “Voices in the Wilderness” Emerging Roles of Israeli Clergywomen”. In 2022, she was invited back to teach in the DFSSM Cantorial School. Dadoun-Cohen served on the CA board for two years and was the chair of the NJ region. She is also an alumnus of the Clergy Leadership Program at the Institute for Jewish Spirituality. In her work, she is passionate about empowering women’s expression and strengthening that voice in Judaism as well as deeply committed to Jewish peoplehood: teaching about Sephardi Jews, Israel and creating and reinforcing existing bridges between Israeli and Diaspora Jewry. Galit and Joe share the gratitude of parenthood of their three daughters Danielle, Naomi and Maya.",
+  "Dave Schlossberg":
+    "Dave Schlossberg is an award-winning pianist and composer from Monroe, New Jersey. Dave graduated from The College of New Jersey in 2006 with a Bachelor’s Degree in Piano Performance and is now the accompanist and musical director for many professional and semi-professional groups around New Jersey. Dave's compositions of Jewish choral music have won acclaim.  A frequently published composer, Dave is sought after for instrumental and vocal arrangements for solo and ensemble (both choral and instrumental), and several compositions of his have been premiered at the North American Jewish Choral Festival. His greatest strength is his ability to improvise tasteful, inspired accompaniment for vocalists, instrumentalists, and choirs. Dave's award-winning debut album, A Place Beyond Words, offers sensitive piano improvisations of classic Jewish liturgical melodies. He is currently working on a semi autobiographical musical about his journey through spinal cord injury at the hands of a drunk driver, entitled \"Facing The Music,\" and travels around the country sharing his compelling story.",
+  "Jacob Greenberg":
+    "Cantor Jacob Greenberg began serving Congregation Beth Israel of Scotch Plains in June 2023. He is currently a member of the Cantors Assembly Executive Council and the Education Chair for its New Jersey region. He was previously Cantor-Youth Director at a Conservative synagogue in Toms River. There he served on the board of Jewish Federation Ocean County and consulted for the USY Region. He prides himself on producing major concerts and residences, his collaborations and performances throughout the greater community, his diversified work with congregants of all ages through educational and social programming, and his original liturgical melodies that have become a part of the CBI repertoire.",
+  "Marina Shemesh":
+    "Cantor Marina Shemesh serves Temple Har Shalom in Warren, NJ, and has previously led congregations in Summit, NJ; New York City; Worcester, MA; and Scarsdale, NY. Born in Leningrad (St. Petersburg), she made Aliyah to Israel in 1990 and began a successful operatic career, performing major roles with the New Israeli Opera, Canadian Opera Company, Vancouver Opera, and the Israel Vocal Arts Institute. She holds Master’s degrees in Music and Voice Performance from the St. Petersburg State Conservatory and Tel Aviv University, where she won first prize in the vocal competition, as well as an MA in Sacred Music and Cantorial Ordination from the Jewish Theological Seminary. A recipient of numerous international awards and scholarships, she is a Cantorial Coach at the H. L. Miller Cantorial School at JTS, teaches voice in Livingston, NJ, and is a member of both the Cantors Assembly and the American Conference of Cantors. She currently serves as a chair of the NJCCE.",
+  "Michelle Teplitz":
+    "Cantor Teplitz has been the Hazzan at MJC for 7 years now. The journey that brought Cantor Michelle Teplitz to Marlboro Jewish Center began more than 30 years ago when her childhood cantor asked her to sing with him on the High Holidays. From then until her ordination in 2010, it seemed like only a matter of time until Cantor Teplitz would bring her love of Jewish music and nusach to the bema. A trained vocalist, Cantor Teplitz is a graduate of the Hartt School of Music at the University of Hartford where she received her degree in Music Education and was a co-founder of L’Shir, the first Jewish a cappella group at UH. After a career teaching music in both public and private schools, Cantor Teplitz decided to pursue her cantorial career at Gratz College in Philadelphia. While there she had the honor of learning from and collaborating with some amazing mentors including Marsha Edelman, Saul Wachs, Cantor Arlyne Unger and Hazzan Alisa Pomerantz Boro. Cantor Teplitz works with Rabbi Michael Pont as her bema partner, and is joined by her husband Ari and their children Amalya and Elijah, who can usually be found running the halls of the Synagogue on Shabbat morning. She is thrilled to be a part of the NJCCE for 2 years now, and looks forward to continuing with NJCCE for many years to come.",
+  "Risa Wallach":
+    "Cantor Risa Wallach (she/her) brings to Temple Beth-El a deep commitment to using the power of music to share spiritual meaning and build community. She is dedicated to caring for her congregants’ pastoral needs, facilitating their life transitions, and celebrating with them the restorative rhythm of Shabbat. She has served congregations in California, New Jersey and the Boston area. Cantor Wallach was ordained at Hebrew College, Newton Centre, Massachusetts in 2015. She is a recipient of the Cantor Rick Boyar Award for excellence in Hazzanut. Her recording project, For the People, a collection of Yiddish songs, liturgical music, and New England folk song.",
+};
+
+const memberBios = [];
+
 for (const imageData of memberImageData) {
   const fileName = imageData.src.slice(
     imageData.src.lastIndexOf("/") + 1,
@@ -31,10 +52,15 @@ for (const imageData of memberImageData) {
 
   const memberName = memberNameArrayCapitalized.join(" ");
   memberNames.push(memberName);
+  memberBios.push(memberBiosDict[memberName]);
 }
 ---
 
 <Layout>
   <Navigation pageTitle="members" />
-  <MemberImages memberImages={memberImageData} names={memberNames} />
+  <MemberImages
+    memberImages={memberImageData}
+    names={memberNames}
+    bios={memberBios}
+  />
 </Layout>

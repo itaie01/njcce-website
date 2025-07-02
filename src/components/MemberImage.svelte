@@ -15,7 +15,7 @@
 </button>
 
 <Modal bind:showModal>
-  <img src={imageSource} alt={`Image of ${name}`} />
+  <img src={imageSource} alt={`Image of ${name}`} class="w-fit h-auto" />
   <h1>{name}</h1>
   <p>{bio}</p>
 </Modal>

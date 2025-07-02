@@ -37,7 +37,7 @@
     margin-top: 10vh;
     margin-left: auto;
     margin-right: auto;
-    max-width: 32em;
+    max-width: 40rem;
     border-radius: 0.2em;
     border: none;
     padding: 0;
