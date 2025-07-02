@@ -1,0 +1,58 @@
+---
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<div class="flex flex-row justify-between items-center mt-6">
+  <div class="text-4xl font-bold">NJCCE</div>
+  <ul class="list-none flex flex-row gap-4">
+    <li
+      class:list={[
+        { "font-bold": pageTitle === "about" },
+        "list-none",
+        "text-xl",
+      ]}
+    >
+      <a href="/">About Us</a>
+    </li>
+    <li
+      class:list={[
+        { "font-bold": pageTitle === "members" },
+        "list-none",
+        "text-xl",
+      ]}
+    >
+      <a href="/members/">Members</a>
+    </li>
+    <li
+      class:list={[
+        { "font-bold": pageTitle === "concerts" },
+        "list-none",
+        "text-xl",
+      ]}
+    >
+      <a href="/concerts/">Concert Schedule</a>
+    </li>
+    <li
+      class:list={[
+        { "font-bold": pageTitle === "recordings" },
+        "list-none",
+        "text-xl",
+      ]}
+    >
+      <a href="/recordings/">Recordings</a>
+    </li>
+    <li
+      class:list={[
+        { "font-bold": pageTitle === "contact" },
+        "list-none",
+        "text-xl",
+      ]}
+    >
+      <a href="/contact/">Contact Us</a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,40 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Layout.astro";
+import MemberImages from "../components/MemberImages.astro";
+
+let memberImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/members/*.jpg"
+);
+
+const memberImageData = await Promise.all(
+  Object.values(memberImages).map((image) => image().then((mod) => mod.default))
+);
+
+memberImageData.sort();
+
+const memberNames = [];
+
+for (const imageData of memberImageData) {
+  const fileName = imageData.src.slice(
+    imageData.src.lastIndexOf("/") + 1,
+    imageData.src.indexOf(".jpg")
+  );
+
+  const memberNameArray = fileName.split("-");
+  const memberNameArrayCapitalized: string[] = [];
+  memberNameArray.map((memberName) =>
+    memberNameArrayCapitalized.push(
+      memberName.substring(0, 1).toUpperCase() + memberName.substring(1)
+    )
+  );
+
+  const memberName = memberNameArrayCapitalized.join(" ");
+  memberNames.push(memberName);
+}
+---
+
+<Layout>
+  <Navigation pageTitle="members" />
+  <MemberImages memberImages={memberImageData} names={memberNames} />
+</Layout>

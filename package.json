@@ -9,6 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.10.2"
+    "@astrojs/svelte": "^7.1.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.10.2",
+    "svelte": "^5.35.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "phosphor-svelte": "^3.0.1"
   }
 }
