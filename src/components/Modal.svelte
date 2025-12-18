@@ -19,7 +19,7 @@
   }}
 >
   <div>
-    <button onclick={() => dialog.close()}><X /></button>
+    <button onclick={() => dialog.close()} class="cursor-pointer"><X /></button>
     {@render header?.()}
     <hr />
     {@render children?.()}

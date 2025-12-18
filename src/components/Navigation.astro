@@ -2,13 +2,74 @@
 interface Props {
   pageTitle: string;
 }
-
 const { pageTitle } = Astro.props;
 ---
 
-<div class="flex flex-row justify-between items-center mt-6">
-  <div class="text-4xl font-bold">NJCCE</div>
-  <ul class="list-none flex flex-row gap-4">
+<nav class="mt-6">
+  <div class="flex flex-row justify-between items-center">
+    <div class="text-4xl font-bold">NJCCE</div>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden text-2xl p-2"
+      aria-label="Toggle menu"
+    >
+      <span id="menu-icon">☰</span>
+    </button>
+
+    <!-- Desktop menu -->
+    <ul class="hidden md:flex flex-row gap-4 list-none">
+      <li
+        class:list={[
+          { "font-bold": pageTitle === "about" },
+          "list-none",
+          "text-xl",
+        ]}
+      >
+        <a href="/">About Us</a>
+      </li>
+      <li
+        class:list={[
+          { "font-bold": pageTitle === "members" },
+          "list-none",
+          "text-xl",
+        ]}
+      >
+        <a href="/members/">Members</a>
+      </li>
+      <li
+        class:list={[
+          { "font-bold": pageTitle === "concerts" },
+          "list-none",
+          "text-xl",
+        ]}
+      >
+        <a href="/concerts/">Concert Schedule</a>
+      </li>
+      <li
+        class:list={[
+          { "font-bold": pageTitle === "recordings" },
+          "list-none",
+          "text-xl",
+        ]}
+      >
+        <a href="/recordings/">Recordings</a>
+      </li>
+      <li
+        class:list={[
+          { "font-bold": pageTitle === "contact" },
+          "list-none",
+          "text-xl",
+        ]}
+      >
+        <a href="/contact/">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile menu -->
+  <ul id="mobile-menu" class="hidden md:hidden flex-col gap-4 mt-4 list-none">
     <li
       class:list={[
         { "font-bold": pageTitle === "about" },
@@ -55,4 +116,24 @@ const { pageTitle } = Astro.props;
       <a href="/contact/">Contact Us</a>
     </li>
   </ul>
-</div>
+</nav>
+
+<script>
+  const button = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("mobile-menu");
+  const icon = document.getElementById("menu-icon");
+
+  button?.addEventListener("click", () => {
+    const isHidden = menu?.classList.contains("hidden");
+
+    if (isHidden) {
+      menu?.classList.remove("hidden");
+      menu?.classList.add("flex");
+      if (icon) icon.textContent = "✕";
+    } else {
+      menu?.classList.add("hidden");
+      menu?.classList.remove("flex");
+      if (icon) icon.textContent = "☰";
+    }
+  });
+</script>

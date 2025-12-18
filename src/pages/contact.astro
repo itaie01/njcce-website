@@ -5,4 +5,52 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout>
   <Navigation pageTitle="contact" />
+  <div class="flex flex-col justify-between items-center mt-4">
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      class="flex flex-col justify-center items-center gap-4"
+    >
+      <input type="hidden" name="access_key" value="" />
+      <div class="flex items-center gap-4">
+        <label for="name">Name</label>
+        <div class="gradient-border relative rounded-3xl">
+          <input
+            type="text"
+            name="name"
+            class="w-2xl max-sm:w-3xs h-fit text-lg p-2 rounded-3xl border-black border-1"
+            required
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <label for="email">Email</label>
+        <div class="gradient-border relative rounded-3xl">
+          <input
+            type="email"
+            name="email"
+            class="w-2xl max-sm:w-3xs h-fit text-lg p-2 rounded-3xl border-black border-1"
+            required
+          />
+        </div>
+      </div>
+      <div class="flex items-start gap-2">
+        <label for="message">Message</label>
+        <div class="gradient-border relative rounded-3xl">
+          <textarea
+            name="message"
+            placeholder="Reach out ot us here!"
+            class="w-2xl max-sm:w-3xs h-[calc(100vh/3)] text-lg p-2 rounded-3xl border-black border-1"
+            required></textarea>
+        </div>
+      </div>
+      <div class="gradient-border relative rounded-md">
+        <button
+          type="submit"
+          class="rounded-md text-2xl px-6 py-2 hover:shadow-slate-600 hover:shadow-sm border-black border-1"
+          >Submit</button
+        >
+      </div>
+    </form>
+  </div>
 </Layout>

@@ -4,11 +4,13 @@ import Layout from "../layouts/Layout.astro";
 import MemberImages from "../components/MemberImages.astro";
 
 let memberImages = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/members/*.jpg"
+  "/src/assets/members/*.jpg",
 );
 
 const memberImageData = await Promise.all(
-  Object.values(memberImages).map((image) => image().then((mod) => mod.default))
+  Object.values(memberImages).map((image) =>
+    image().then((mod) => mod.default),
+  ),
 );
 
 memberImageData.sort();
@@ -32,6 +34,18 @@ const memberBiosDict: MemberBios = {
     "Cantor Teplitz has been the Hazzan at MJC for 7 years now. The journey that brought Cantor Michelle Teplitz to Marlboro Jewish Center began more than 30 years ago when her childhood cantor asked her to sing with him on the High Holidays. From then until her ordination in 2010, it seemed like only a matter of time until Cantor Teplitz would bring her love of Jewish music and nusach to the bema. A trained vocalist, Cantor Teplitz is a graduate of the Hartt School of Music at the University of Hartford where she received her degree in Music Education and was a co-founder of L’Shir, the first Jewish a cappella group at UH. After a career teaching music in both public and private schools, Cantor Teplitz decided to pursue her cantorial career at Gratz College in Philadelphia. While there she had the honor of learning from and collaborating with some amazing mentors including Marsha Edelman, Saul Wachs, Cantor Arlyne Unger and Hazzan Alisa Pomerantz Boro. Cantor Teplitz works with Rabbi Michael Pont as her bema partner, and is joined by her husband Ari and their children Amalya and Elijah, who can usually be found running the halls of the Synagogue on Shabbat morning. She is thrilled to be a part of the NJCCE for 2 years now, and looks forward to continuing with NJCCE for many years to come.",
   "Risa Wallach":
     "Cantor Risa Wallach (she/her) brings to Temple Beth-El a deep commitment to using the power of music to share spiritual meaning and build community. She is dedicated to caring for her congregants’ pastoral needs, facilitating their life transitions, and celebrating with them the restorative rhythm of Shabbat. She has served congregations in California, New Jersey and the Boston area. Cantor Wallach was ordained at Hebrew College, Newton Centre, Massachusetts in 2015. She is a recipient of the Cantor Rick Boyar Award for excellence in Hazzanut. Her recording project, For the People, a collection of Yiddish songs, liturgical music, and New England folk song.",
+  "Avima Darnov":
+    "Cantor Avima Rudavsky Darnov was among the first women to be invested as Cantor by the Cantors Institute (now the H. L. Miller School) of the Jewish Theological Seminary in 1989. She earned her MA in Jewish Education in 1991. She started singing with the NJCCE in 1989 with a couple of long breaks. Her career has included serving in pulpits in NJ and NY. From 2007-2022, she ran her own independent hebrew school (The Hebrew Corner) and wove custom ordered tallitot (The Tallit Corner). She returned to the full-time pulpit in 2022 as the Cantor and the Director of the Religious School of Adath Shalom in Morris Plains and rejoined the NJCCE in 2024. She rejoined the NJCCE in 2024 and has enjoyed singing with her colleagues.",
+  "Mark Biddleman":
+    "Cantor Mark Biddelman led Temple Emanuel of the Pascack Valley in Woodcliff Lake NJ in prayer, song, and study for 48 years. He is a graduate of the Hebrew Union College Jewish Institute of Religion School of Sacred Music from which he received Cantorial Certification, Bachelor of Sacred Music degree, and the degree of Doctor of Music honorous causum. Throughout the years, Cantor Biddelman has been a musical innovator and has composed numerous musical settings for the Shabbat prayers. In 1971 he composed the first folk-rock service for Shabbat Eve ever to be performed in a Conservative synagogue on Shabbat with musical instrument accompaniment. In 1991 he composed another setting for the Friday eve service scored for electronic instruments. Cantor Biddelman has been the recipient of several awards including B’nai B’rith Man of the Year in 1990 and the Israel Bonds Sh’ma Yisrael Award in 1988. He is a past President, Vice President, treasurer, and Secretary of the New Jersey region of the Cantors Assembly, and has served as a conductor of the New Jersey Cantors Concert Ensemble. He continues to present concerts and programs and conducts services for senior citizens at facilities throughout northern New Jersey.",
+  "Daniel Green":
+    "In 1965 Cantor Daniel Green was ordained as a Cantor at Hebrew Union College, having studied music and education earlier at Queens College. Over the course of his lengthy career, he received two honorary Doctor of Music degrees and numerous awards. Dan served for eight years with synagogues in Natick, MA and New York City, then for 35 years with Congregation B’nai Israel of Toms River, NJ, where he is now honored as Cantor Emeritus. Among his cantorial accomplishments are: - Full-time chanting of services and Torah, teaching in Talmud Torah, sounding of the shofar and co-officiating at weddings, funerals and interfaith events. - Preparation of 876 boys and girls for Bar and Bat Mitzvah and development of the acclaimed Year-in-Advance ceremony for 12-year-olds. - Chanting of biblical portions in English on appropriate occasions. - Management of volunteer choirs of adults and of children. - Production of many major concerts of Jewish music. Although formally retired by 2008, Dan’s devoted service to his shul in Toms River has now lasted over 50 years, for he still davens and leyns Torah frequently there, while also volunteering as archivist of the congregation’s cemetery. During the same 50+ years, Dan has performed with the NJ Cantors Concert Ensemble in hundreds of concerts all over New Jersey and beyond. In addition, he continues after more than 60 years to be a devoted member of both the Cantors Assembly and the American Conference of Cantors. Dan lives in Jackson with his wife, Cantor Ruth Green, and they are still making beautiful music together.",
+  "Ruth Katz Green":
+    "Ruth Katz Green is Cantor Emerita of Temple Beth Shalom in Manalapan, NJ, where she served for twenty years, retiring in 2015. She was twice the Chair of the New Jersey Region of the Cantors Assembly, and she joyfully participates in the New Jersey Cantors Concert Ensemble. Ruth has volunteered at Congregation B'nai Israel in Toms River, NJ, since her retirement. She helped reinvigorate the Sisterhood following years of inactivity and also created a monthly Rosh Chodesh musical program for the women of the community, which she has presented since 2018. Ruth studied hazzanut with the late Professor Max Wohlberg of the H.L. Miller Cantorial School of the Jewish Theological Seminary of America. Before assuming her position as Cantor in Manalapan, she served synagogues in New Jersey and in suburbs of Philadelphia, where she was also an instructor in Jewish music and liturgy and prepared students for Bar and Bat Mitzvah. Ruth was raised on Long Island, received a Bachelor of Science degree from Syracuse University, and studied voice, violin, piano and choral conducting. She lives in Jackson with her husband, Cantor Daniel Green, and they continue to make beautiful music together.",
+  "Robyn Streitman":
+    "Robyn Streitman serves as the Assistant Cantor for Temple B’nai Shalom in East Brunswick. She brings her passion for music to all that she does at Temple B’nai Shalom - tutoring B’nai Mitzvah students, directing the junior choir, teaching music in the Religious school, and leading services. Robyn also tutors B’nai Mitzvah students at Marlboro Jewish Center, leads weekly Shabbat services for the residents at assisted living facilities, and has served in many High Holy Day pulpits. Robyn is an accomplished pianist, has composed music for synagogue worship services, and is the recipient of the Rabbi Chana Timmoner Liturgy Award for her congregational setting of Ahavat Olam.",
+  "Estelle Epstein":
+    "Hazzan Estelle Kunoff Epstein has been singing with the NJ Cantors Concert Ensemble since her Cantorial Ordination frm the H. L. Miller Cantorial School of the Jewish Theological Seminary. She is a former chair of the NJ Region of the Cantors Assembly. She has served as High Holidays Hazzan and Guest Hazzan at many area synagogues in both NJ and NY.  Most recently, Hazzan Epstein was Torah Reader and Darshanit at the Fort Lee Jewish Center Gesher Shalom. Hazzan Epstein has also performed as solo artist in the annual Yiddish concert at the Jewish Home at Rockleigh, and the annual Cantorial Concert at the JCC on the Palisades. Hazzan Epstein made Aliyah after receiving her PhD in Physics at MIT, working at Ben Gurion University as a Postdoctoral Fellow and then Associate Professor of Physics.  During this time, she taught Physics at Comprehensive High School Alef in Be’er Sheva and Zinman High School in Dimona as part of the Teacher Scientist Program funded by the Rothchild Foundation.  While in Be’er Sheva Hazzan Epstein was a shlichat tzibbur and Torah reader at the Masorti Synagogue Eshel Avraham and a soloist with the Light Opera of the Negev, performing in all the major cities in Israel and on Israel TV.  Currently, she is adjunct professor of  Physics at both Rutgers University, Newark Campus and Fairleigh Dickenson University, Metropolitan campus.",
 };
 
 const memberBios = [];
@@ -39,15 +53,15 @@ const memberBios = [];
 for (const imageData of memberImageData) {
   const fileName = imageData.src.slice(
     imageData.src.lastIndexOf("/") + 1,
-    imageData.src.indexOf(".jpg")
+    imageData.src.indexOf(".jpg"),
   );
 
   const memberNameArray = fileName.split("-");
   const memberNameArrayCapitalized: string[] = [];
   memberNameArray.map((memberName) =>
     memberNameArrayCapitalized.push(
-      memberName.substring(0, 1).toUpperCase() + memberName.substring(1)
-    )
+      memberName.substring(0, 1).toUpperCase() + memberName.substring(1),
+    ),
   );
 
   const memberName = memberNameArrayCapitalized.join(" ");

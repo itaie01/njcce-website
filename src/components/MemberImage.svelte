@@ -6,7 +6,7 @@
   let showModal = $state(false);
 </script>
 
-<button onclick={() => (showModal = true)}>
+<button onclick={() => (showModal = true)} class="cursor-pointer">
   <img
     src={imageSource}
     alt={`Image of ${name}`}
@@ -16,6 +16,7 @@
 
 <Modal bind:showModal>
   <img src={imageSource} alt={`Image of ${name}`} class="w-fit h-auto" />
-  <h1>{name}</h1>
-  <p>{bio}</p>
+  <h1 class="text-2xl mt-2">{name}</h1>
+  <hr class="border-2 border-black" />
+  <p class="mt-2">{bio}</p>
 </Modal>
