@@ -1,9 +1,7 @@
 <script>
   import X from "phosphor-svelte/lib/X";
-
-  let { showModal = $bindable(), header, children } = $props();
-
-  let dialog = $state(); // HTMLDialogElement
+  let { showModal = $bindable(), children } = $props();
+  let dialog = $state();
 
   $effect(() => {
     if (showModal) dialog.showModal();
@@ -18,49 +16,58 @@
     if (e.target === dialog) dialog.close();
   }}
 >
-  <div>
-    <button onclick={() => dialog.close()} class="cursor-pointer"><X /></button>
-    {@render header?.()}
+  <div class="header">
+    <span class="title">Michelle Teplitz</span>
+    <button class="close" onclick={() => dialog.close()}><X size={16} /></button
+    >
+  </div>
+
+  <div class="body">
     {@render children?.()}
-    <hr />
-    <!-- svelte-ignore a11y_autofocus -->
+  </div>
+
+  <div class="footer">
+    <button class="close-btn" onclick={() => dialog.close()}>Close</button>
   </div>
 </dialog>
 
 <style>
   dialog {
-    flex: auto;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    margin-top: 10vh;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 40rem;
-    border-radius: 0.2em;
-    border: none;
+    background: #fff;
+    border: 0.5px solid #ddd;
+    border-radius: 12px;
     padding: 0;
+    max-width: 460px;
+    width: calc(100vw - 2rem);
+    max-height: 80vh;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: none;
   }
+
   dialog::backdrop {
     background: rgba(0, 0, 0, 0.3);
   }
-  dialog > div {
-    padding: 1em;
-  }
+
   dialog[open] {
-    animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: rise 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  @keyframes zoom {
+
+  dialog[open]::backdrop {
+    animation: fade 0.2s ease;
+  }
+
+  @keyframes rise {
     from {
-      transform: scale(0.95);
+      opacity: 0;
+      transform: translateY(8px);
     }
     to {
-      transform: scale(1);
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-  dialog[open]::backdrop {
-    animation: fade 0.2s ease-out;
-  }
+
   @keyframes fade {
     from {
       opacity: 0;
@@ -69,7 +76,64 @@
       opacity: 1;
     }
   }
-  button {
-    display: block;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    border-bottom: 0.5px solid #e5e5e5;
+  }
+
+  .title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+  }
+
+  .close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    transition: color 0.15s;
+  }
+
+  .close:hover {
+    color: #111;
+  }
+
+  .body {
+    padding: 1.2rem 1.4rem;
+    overflow-y: auto;
+    max-height: calc(80vh - 110px);
+    font-size: 14px;
+    line-height: 1.75;
+    color: #555;
+  }
+
+  .footer {
+    padding: 0.85rem 1.4rem;
+    border-top: 0.5px solid #e5e5e5;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .close-btn {
+    background: none;
+    border: 0.5px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+    transition: background 0.15s;
+  }
+
+  .close-btn:hover {
+    background: #f5f5f5;
   }
 </style>
