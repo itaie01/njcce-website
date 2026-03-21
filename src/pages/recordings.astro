@@ -1,8 +1,40 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Layout from "../layouts/Layout.astro";
+import Recording from "../components/Recording.svelte";
+
+const recordings = [
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+];
 ---
 
 <Layout>
   <Navigation pageTitle="recordings" />
+  <div class="h-[60vh] flex items-center justify-center">
+    <div
+      class="container mx-auto py-8 flex flex-row flex-wrap items-start justify-center gap-8"
+    >
+      {
+        recordings.map((recording, index) => (
+          <Recording
+            client:load
+            key={index}
+            title={recording.title}
+            src={recording.src}
+          />
+        ))
+      }
+    </div>
+  </div>
 </Layout>

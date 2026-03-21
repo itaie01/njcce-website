@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: RosarivoRegular;
+  src: url("../assets/fonts/Rosarivo-Regular.ttf");
+}
+
+@font-face {
+  font-family: RosarivoItalic;
+  src: url("../assets/fonts/Rosarivo-Italic.ttf");
+}

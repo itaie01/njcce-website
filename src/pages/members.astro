@@ -72,10 +72,14 @@ for (const imageData of memberImageData) {
 
 <Layout>
   <Navigation pageTitle="members" />
-  <div class="text-5xl flex justify-center items-center my-4">Our Members</div>
-  <MemberImages
-    memberImages={memberImageData}
-    names={memberNames}
-    bios={memberBios}
-  />
+  <div class="container mx-auto">
+    <div class="text-5xl flex justify-center items-center my-4">
+      Our Members
+    </div>
+    <MemberImages
+      memberImages={memberImageData}
+      names={memberNames}
+      bios={memberBios}
+    />
+  </div>
 </Layout>

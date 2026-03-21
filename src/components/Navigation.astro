@@ -8,7 +8,7 @@ interface Props {
 const { pageTitle } = Astro.props;
 ---
 
-<nav class="mt-6 text-[#2C2C2C]">
+<nav class="container mx-auto mt-6 text-[#2C2C2C]">
   <div class="flex flex-row justify-between items-center">
     <div class="flex items-center justify-center">
       <Image src={Logo} alt="Group logo" class="w-auto h-20" />
@@ -28,6 +28,7 @@ const { pageTitle } = Astro.props;
       <li
         class:list={[
           { "font-bold": pageTitle === "about" },
+          { "text-[#1C63AD]": pageTitle === "about" },
           "list-none",
           "text-xl",
         ]}
@@ -37,6 +38,7 @@ const { pageTitle } = Astro.props;
       <li
         class:list={[
           { "font-bold": pageTitle === "members" },
+          { "text-[#1C63AD]": pageTitle === "members" },
           "list-none",
           "text-xl",
         ]}
@@ -46,6 +48,7 @@ const { pageTitle } = Astro.props;
       <li
         class:list={[
           { "font-bold": pageTitle === "concerts" },
+          { "text-[#1C63AD]": pageTitle === "concerts" },
           "list-none",
           "text-xl",
         ]}
@@ -55,6 +58,7 @@ const { pageTitle } = Astro.props;
       <li
         class:list={[
           { "font-bold": pageTitle === "recordings" },
+          { "text-[#1C63AD]": pageTitle === "recordings" },
           "list-none",
           "text-xl",
         ]}
@@ -64,6 +68,7 @@ const { pageTitle } = Astro.props;
       <li
         class:list={[
           { "font-bold": pageTitle === "contact" },
+          { "text-[#1C63AD]": pageTitle === "contact" },
           "list-none",
           "text-xl",
         ]}
@@ -78,6 +83,7 @@ const { pageTitle } = Astro.props;
     <li
       class:list={[
         { "font-bold": pageTitle === "about" },
+        { "text-[#1C63AD]": pageTitle === "about" },
         "list-none",
         "text-xl",
       ]}
@@ -87,6 +93,7 @@ const { pageTitle } = Astro.props;
     <li
       class:list={[
         { "font-bold": pageTitle === "members" },
+        { "text-[#1C63AD]": pageTitle === "members" },
         "list-none",
         "text-xl",
       ]}
@@ -96,6 +103,7 @@ const { pageTitle } = Astro.props;
     <li
       class:list={[
         { "font-bold": pageTitle === "concerts" },
+        { "text-[#1C63AD]": pageTitle === "concerts" },
         "list-none",
         "text-xl",
       ]}
@@ -105,6 +113,7 @@ const { pageTitle } = Astro.props;
     <li
       class:list={[
         { "font-bold": pageTitle === "recordings" },
+        { "text-[#1C63AD]": pageTitle === "recordings" },
         "list-none",
         "text-xl",
       ]}
@@ -114,6 +123,7 @@ const { pageTitle } = Astro.props;
     <li
       class:list={[
         { "font-bold": pageTitle === "contact" },
+        { "text-[#1C63AD]": pageTitle === "contact" },
         "list-none",
         "text-xl",
       ]}

@@ -1,6 +1,11 @@
 <script>
   import X from "phosphor-svelte/lib/X";
-  let { showModal = $bindable(), children } = $props();
+  let {
+    showModal = $bindable(),
+    imageSrc = "",
+    name = "",
+    bio = "",
+  } = $props();
   let dialog = $state();
 
   $effect(() => {
@@ -17,13 +22,14 @@
   }}
 >
   <div class="header">
-    <span class="title">Michelle Teplitz</span>
     <button class="close" onclick={() => dialog.close()}><X size={16} /></button
     >
   </div>
 
   <div class="body">
-    {@render children?.()}
+    <img class="profile-img" src={imageSrc} alt={name} />
+    <p class="name">{name}</p>
+    <p class="bio">{bio}</p>
   </div>
 
   <div class="footer">
@@ -79,16 +85,9 @@
 
   .header {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem 1.4rem;
-    border-bottom: 0.5px solid #e5e5e5;
-  }
-
-  .title {
-    font-size: 15px;
-    font-weight: 500;
-    color: #111;
+    justify-content: flex-end;
+    padding: 0.6rem 0.8rem 0;
+    background-color: #fefdfd;
   }
 
   .close {
@@ -107,19 +106,51 @@
   }
 
   .body {
-    padding: 1.2rem 1.4rem;
+    padding: 0.5rem 1.4rem 1.2rem;
     overflow-y: auto;
-    max-height: calc(80vh - 110px);
-    font-size: 14px;
+    max-height: calc(80vh - 80px);
+    background-color: #fefdfd;
+  }
+
+  .body::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .profile-img {
+    float: left;
+    width: auto;
+    height: 260px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 6px;
+    margin: 0 16px 0 0;
+    border: 0.5px solid #e5e5e5;
+    display: block;
+  }
+
+  .name {
+    font-size: 24px;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 0.4em;
+    line-height: 1.3;
+  }
+
+  .bio {
+    font-size: 16px;
     line-height: 1.75;
     color: #555;
+    margin: 0;
   }
 
   .footer {
-    padding: 0.85rem 1.4rem;
+    padding: 0.25rem 1.4rem 0.25rem 1.4rem;
     border-top: 0.5px solid #e5e5e5;
     display: flex;
     justify-content: flex-end;
+    background-color: #fefdfd;
   }
 
   .close-btn {

@@ -1,34 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
+import Logo from "../assets/logos/logo_5_text.png";
+import Assembly from "../assets/members/all_members.png";
+import { Image } from "astro:assets";
 ---
 
 <Layout>
   <Navigation pageTitle="about" />
-  <div class="max-w-2xl flex flex-col items-center gap-6 mt-6 mx-auto">
-    <div>
-      The New Jersey Cantors Concert Ensemble (NJCCE) was founded over 60 years
-      ago and is the world’s very first choir of both men and women cantors.
-      With a group of over twenty hazzanim, the NJCCE features cantors of
-      Conservative, Reform, Reconstructionist and unaffiliated congregations
-      throughout the State of New Jersey (and beyond). The Ensemble is renowned
-      across the country, performing at venues like synagogues, Jewish
-      retirement communities, and Jewish day schools. The NJCCE most recently
-      performed in concerts at the Cantors Assembly Convention in 2025 and the
-      North American Jewish Choral Festival in 2023.
+  <section class="w-full bg-[#E0ECF4]">
+    <div
+      class="flex flex-row items-center justify-between gap-14 mx-auto px-12 py-12 mt-8"
+    >
+      <div class="max-w-2xl flex flex-col items-center gap-6 text-left text-xl">
+        <div>
+          The New Jersey Cantors Concert Ensemble (NJCCE) was founded over 60
+          years ago and is the world's very first choir of both men and women
+          cantors. With a group of over twenty hazzanim, the NJCCE features
+          cantors of Conservative, Reform, Reconstructionist and unaffiliated
+          congregations throughout the State of New Jersey (and beyond). The
+          Ensemble is renowned across the country, performing at venues like
+          synagogues, Jewish retirement communities, and Jewish day schools. The
+          NJCCE most recently performed in concerts at the Cantors Assembly
+          Convention in 2025 and the North American Jewish Choral Festival in
+          2023.
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <Image src={Logo} alt="Group logo" class="w-full h-auto" />
+      </div>
     </div>
-    <!-- <hr class="border-purple-200 border-2 w-full" /> -->
-    <div>
-      Funds raised at these concerts go toward scholarships for cantorial
-      students at the Jewish Theological Seminary, Hebrew Union College-Jewish
-      Institute of Religion, and the Academy for Jewish Religion.
+  </section>
+  <section class="w-full flex items-center justify-center flex-wrap">
+    <div class="w-1/2 bg-[#D9DAC9] py-10 px-10">
+      <Image
+        src={Assembly}
+        alt="Assembly members performing"
+        class="w-auto h-1/6"
+      />
     </div>
-    <!-- <hr class="border-purple-200 border-2 w-full" /> -->
-    <div>
-      The Ensemble finds great joy in bringing together cantors from across the
-      Garden State and bringing the beauty of Jewish music to communities of all
-      ages and backgrounds.
+    <div
+      class="w-1/2 bg-[#F3BA19] py-10 px-10 text-white flex flex-col justify-center items-center gap-4 self-stretch text-xl text-right"
+    >
+      <div class="max-w-2xl">
+        Funds raised at these concerts go toward scholarships for cantorial
+        students at the Jewish Theological Seminary, Hebrew Union College-Jewish
+        Institute of Religion, and the Academy for Jewish Religion.
+      </div>
+      <div class="max-w-2xl">
+        The Ensemble finds great joy in bringing together cantors from across
+        the Garden State and bringing the beauty of Jewish music to communities
+        of all ages and backgrounds.
+      </div>
     </div>
-  </div>
-  <!-- <hr class="border-purple-200 border-2 rounded-xs" /> -->
+  </section>
 </Layout>
