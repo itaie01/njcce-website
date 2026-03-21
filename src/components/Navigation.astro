@@ -1,13 +1,18 @@
 ---
+import Logo from "../assets/logos/logo_5.png";
+import { Image } from "astro:assets";
+
 interface Props {
   pageTitle: string;
 }
 const { pageTitle } = Astro.props;
 ---
 
-<nav class="mt-6">
+<nav class="mt-6 text-[#2C2C2C]">
   <div class="flex flex-row justify-between items-center">
-    <div class="text-4xl font-bold">NJCCE</div>
+    <div class="flex items-center justify-center">
+      <Image src={Logo} alt="Group logo" class="w-auto h-20" />
+    </div>
 
     <!-- Mobile menu button -->
     <button

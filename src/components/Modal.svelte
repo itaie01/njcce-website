@@ -21,7 +21,6 @@
   <div>
     <button onclick={() => dialog.close()} class="cursor-pointer"><X /></button>
     {@render header?.()}
-    <hr />
     {@render children?.()}
     <hr />
     <!-- svelte-ignore a11y_autofocus -->

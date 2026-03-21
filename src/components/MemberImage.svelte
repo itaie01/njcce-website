@@ -7,11 +7,19 @@
 </script>
 
 <button onclick={() => (showModal = true)} class="cursor-pointer">
-  <img
-    src={imageSource}
-    alt={`Image of ${name}`}
-    class="object-contain w-72 h-auto"
-  />
+  <div
+    class="w-60 h-80 flex flex-col items-start justify-between overflow-hidden hover:scale-110 hover:shadow-md hover:transition-all duration-150 ease-in-out rounded-md border-2 border-black p-4"
+  >
+    <img
+      src={imageSource}
+      alt={`Image of ${name}`}
+      class="object-contain w-full h-64"
+    />
+
+    <div class="text-left px-2 py-1 text-xl">
+      {name}
+    </div>
+  </div>
 </button>
 
 <Modal bind:showModal>
