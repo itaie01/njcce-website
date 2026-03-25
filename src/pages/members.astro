@@ -5,18 +5,7 @@ import MemberImages from "../components/MemberImages.astro";
 
 let memberImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/members/*.jpg",
-  { eager: true },
 );
-
-const memberImageData = await Promise.all(
-  Object.values(memberImages).map((image) =>
-    image().then((mod) => mod.default),
-  ),
-);
-
-memberImageData.sort();
-
-const memberNames = [];
 
 type MemberBios = {
   [id: string]: string;
@@ -49,26 +38,33 @@ const memberBiosDict: MemberBios = {
     "Hazzan Estelle Kunoff Epstein has been singing with the NJ Cantors Concert Ensemble since her Cantorial Ordination frm the H. L. Miller Cantorial School of the Jewish Theological Seminary. She is a former chair of the NJ Region of the Cantors Assembly. She has served as High Holidays Hazzan and Guest Hazzan at many area synagogues in both NJ and NY.  Most recently, Hazzan Epstein was Torah Reader and Darshanit at the Fort Lee Jewish Center Gesher Shalom. Hazzan Epstein has also performed as solo artist in the annual Yiddish concert at the Jewish Home at Rockleigh, and the annual Cantorial Concert at the JCC on the Palisades. Hazzan Epstein made Aliyah after receiving her PhD in Physics at MIT, working at Ben Gurion University as a Postdoctoral Fellow and then Associate Professor of Physics.  During this time, she taught Physics at Comprehensive High School Alef in Be’er Sheva and Zinman High School in Dimona as part of the Teacher Scientist Program funded by the Rothchild Foundation.  While in Be’er Sheva Hazzan Epstein was a shlichat tzibbur and Torah reader at the Masorti Synagogue Eshel Avraham and a soloist with the Light Opera of the Negev, performing in all the major cities in Israel and on Israel TV.  Currently, she is adjunct professor of  Physics at both Rutgers University, Newark Campus and Fairleigh Dickenson University, Metropolitan campus.",
 };
 
-const memberBios = [];
+const memberImageData: ImageMetadata[] = [];
+const memberNames: string[] = [];
+const memberBios: string[] = [];
 
-for (const imageData of memberImageData) {
-  const fileName = imageData.src.slice(
-    imageData.src.lastIndexOf("/") + 1,
-    imageData.src.indexOf(".jpg"),
-  );
+for (const [filePath, imageLoader] of Object.entries(memberImages)) {
+  const mod = await imageLoader();
+  const rawName = filePath
+    .split("/")
+    .pop()!
+    .replace(/\.jpg$/i, "");
 
-  const memberNameArray = fileName.split("-");
-  const memberNameArrayCapitalized: string[] = [];
-  memberNameArray.map((memberName) =>
-    memberNameArrayCapitalized.push(
-      memberName.substring(0, 1).toUpperCase() + memberName.substring(1),
-    ),
-  );
+  const memberName = rawName
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 
-  const memberName = memberNameArrayCapitalized.join(" ");
+  memberImageData.push(mod.default);
   memberNames.push(memberName);
   memberBios.push(memberBiosDict[memberName]);
 }
+
+const combined = memberImageData.map((img, i) => ({
+  img,
+  name: memberNames[i],
+  bio: memberBios[i],
+}));
+combined.sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <Layout>

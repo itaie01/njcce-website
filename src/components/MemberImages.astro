@@ -19,7 +19,7 @@ const { memberImages, names, bios } = Astro.props;
         imageSource={memberImage.src}
         name={names[index]}
         bio={bios[index]}
-        client:load
+        client:only="svelte"
       />
     ))
   }
