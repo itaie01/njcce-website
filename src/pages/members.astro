@@ -5,6 +5,7 @@ import MemberImages from "../components/MemberImages.astro";
 
 let memberImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/members/*.jpg",
+  { eager: true },
 );
 
 const memberImageData = await Promise.all(
