@@ -4,18 +4,19 @@ import Layout from "../layouts/Layout.astro";
 import Recording from "../components/Recording.svelte";
 
 const recordings = [
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
-  { title: "Title", src: "https://youtu.be/79xontgRjyU?si=8mMCJUr4uJizipXa" },
+  {
+    title: "Am Israel Chai",
+    src: "https://www.youtube.com/watch?v=2s7yquY1rCY",
+  },
+  {
+    title: "Yom Ze L'Israel",
+    src: "https://www.youtube.com/watch?v=UpPHm3zBhdA",
+  },
+  {
+    title: "Shomer Israel",
+    src: "https://www.youtube.com/watch?v=BxBLhpDjSOg&pp=0gcJCSgLAYcqIYzv",
+  },
+  { title: "Get Happy", src: "https://www.youtube.com/watch?v=bABnTh0nWqA" },
 ];
 ---
 
@@ -27,12 +28,7 @@ const recordings = [
     >
       {
         recordings.map((recording, index) => (
-          <Recording
-            client:load
-            key={index}
-            title={recording.title}
-            src={recording.src}
-          />
+          <Recording client:load title={recording.title} src={recording.src} />
         ))
       }
     </div>
