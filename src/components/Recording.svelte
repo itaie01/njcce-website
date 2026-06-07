@@ -2,7 +2,7 @@
   import CaretRight from "phosphor-svelte/lib/CaretRight";
 
   let { title = "Recording", src = "" } = $props();
-  let open = $state(false);
+  let open = $state(true);
 
   function getYouTubeId(url) {
     const match = url.match(
@@ -47,7 +47,7 @@
   .wrapper {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 30rem;
   }
 
   .toggle {
